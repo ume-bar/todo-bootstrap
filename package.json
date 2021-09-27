@@ -15,7 +15,11 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^4.46.0"
+  }
 }
