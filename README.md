@@ -67,3 +67,73 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+
+<template>
+  <div id="Todo">
+    <h1>ToDoリスト</h1>
+    <todo-form @handleParentAddTodo="handleParentAddTodo" />
+    <todo-list
+      :todos="todos"
+      @handleParentDeleteTodo="handleParentDeleteTodo"
+      @handleParentCompleteTodo="handleParentCompleteTodo" />
+  </div>
+</template>
+
+<script>
+// TodoForm,TodoList読み込み
+import TodoForm from '@/components/TodoForm'
+import TodoList from '@/components/TodoList'
+import axios from './axios'
+
+export default {
+  name: 'Todo',
+  components: {
+    TodoForm,
+    TodoList
+  },
+  data () {
+    return {
+      // データバインディング
+      todos: []
+    }
+  },
+  methods: {
+    // v-onでメソッド呼び出し
+    // Todoリスト追加処理
+    async handleParentAddTodo (value) {
+      if (value) {
+        // メモを投稿するAPIを実行
+        await axios.post("/tutorials", {
+
+        })
+        // メモの一覧を取得するAPIを実行
+        this.todos = await axios.get("/tutorials")
+      }}
+    },
+    // Todoリスト完了処理
+    // この処理でcompleteの真偽を逆転させる
+    handleParentCompleteTodo (index) {
+      // this.todos[index].complete = !this.todos[index].complete
+    },
+    // Todoリスト削除処理
+    // spliceで引数の一行を消去
+    handleParentDeleteTodo (index) {
+      app.post('/delete/:id', (req, res) => {
+  client.query(
+    'DELETE FROM items WHERE id=?',
+    [req.params.id],
+    (error, results) => {
+      res.redirect('/index');
+    }
+  );
+});
+      // this.todos.splice(index, 1)
+    }
+  }
+
+</script>
+
+<style>
+
+</style>
